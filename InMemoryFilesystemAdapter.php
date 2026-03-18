@@ -45,7 +45,7 @@ class InMemoryFilesystemAdapter implements FilesystemAdapter
     public function write(string $path, string $contents, Config $config): void
     {
         $path = $this->preparePath($path);
-        $file = $this->files[$path] = $this->files[$path] ?? new InMemoryFile();
+        $file = ($this->files[$path] ??= new InMemoryFile());
         $file->updateContents($contents, $config->get('timestamp'));
 
         $visibility = $config->get(Config::OPTION_VISIBILITY, $this->defaultVisibility);
