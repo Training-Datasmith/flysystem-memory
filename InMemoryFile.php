@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace League\Flysystem\InMemory;
 
 use const FILEINFO_MIME_TYPE;
+
 use finfo;
 
 /**

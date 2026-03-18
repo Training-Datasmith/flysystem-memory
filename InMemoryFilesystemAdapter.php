@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace League\Flysystem\InMemory;
 
+use function array_keys;
+
 use League\Flysystem\Config;
 use League\Flysystem\DirectoryAttributes;
 use League\Flysystem\FileAttributes;
@@ -15,9 +17,9 @@ use League\Flysystem\UnableToRetrieveMetadata;
 use League\Flysystem\UnableToSetVisibility;
 use League\Flysystem\Visibility;
 use League\MimeTypeDetection\FinfoMimeTypeDetector;
+
 use League\MimeTypeDetection\MimeTypeDetector;
 
-use function array_keys;
 use function rtrim;
 
 class InMemoryFilesystemAdapter implements FilesystemAdapter
@@ -199,7 +201,7 @@ class InMemoryFilesystemAdapter implements FilesystemAdapter
 
                         $dirPath .= $part . '/';
 
-                        if ( ! in_array($dirPath, $listedDirectories, true)) {
+                        if (! in_array($dirPath, $listedDirectories, true)) {
                             $listedDirectories[] = $dirPath;
                             yield new DirectoryAttributes(trim($prefix . $dirPath, '/'));
                         }
@@ -223,7 +225,7 @@ class InMemoryFilesystemAdapter implements FilesystemAdapter
         $sourcePath = $this->preparePath($source);
         $destinationPath = $this->preparePath($destination);
 
-        if ( ! $this->fileExists($source)) {
+        if (! $this->fileExists($source)) {
             throw UnableToMoveFile::fromLocationTo($source, $destination);
         }
 
@@ -242,7 +244,7 @@ class InMemoryFilesystemAdapter implements FilesystemAdapter
         $source = $this->preparePath($source);
         $destination = $this->preparePath($destination);
 
-        if ( ! $this->fileExists($source)) {
+        if (! $this->fileExists($source)) {
             throw UnableToCopyFile::fromLocationTo($source, $destination);
         }
 
