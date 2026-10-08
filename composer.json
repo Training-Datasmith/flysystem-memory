@@ -10,10 +10,27 @@
             "League\\Flysystem\\InMemory\\": ""
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "League\\Flysystem\\InMemory\\Tests\\": "tests/"
+        }
+    },
     "require": {
         "php": "^8.0.2",
         "ext-fileinfo": "*",
         "league/flysystem": "^3.0.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "9.6.38"
+    },
+    "config": {
+        "platform": {
+            "php": "8.0.2"
+        }
+    },
+    "scripts": {
+        "test": "phpunit --do-not-cache-result",
+        "test:random": "phpunit --order-by=random --random-order-seed=20261008 --do-not-cache-result"
     },
     "license": "MIT",
     "authors": [
